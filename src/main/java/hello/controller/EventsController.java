@@ -22,6 +22,36 @@ public class EventsController {
     public List<Event> fetchEvents() {
         return eventsRepository.findAll();
     }
-
+    
+    @GetMapping("/events/{idEvent}")
+    public Event searchEvent(@PathVariable Long idEvent) {
+    	Optional<Event> eventOpt = eventsRepository.findById(idEvent);
+    	if(!eventOpt.isPresent()) {
+    		throw new EventNotFoundException();
+    	}
+    	Event e = eventOpt.get();
+    	return e;	
+    }
+    
+    @PostMapping("/events")
+    public Event createEvent(@RequestBody Event event) {
+    	return eventsRepository.save(event);
+    }
+    
+    @PutMapping("/events/{idEvent}")
+    public Event editEvent(@PathVariable Long idEvent, @RequestBody Event event) {
+    	Optional<Event> eventOpt = eventsRepository.findById(idEvent);
+    	if(!eventOpt.isPresent()) {
+    		throw new EventNotFoundException();
+    	}
+    	event.setId(idEvent);
+    	return eventsRepository.save(event);
+    }
+    
+    @DeleteMapping("/events/{idEvent}")
+    public void deleteEvent(@PathVariable Long idEvent) {
+    	eventsRepository.deleteById(idEvent);
+    }
+    
 }
 
