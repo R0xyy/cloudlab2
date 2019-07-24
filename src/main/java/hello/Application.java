@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Application {
 
-    @RequestMapping("/")
-    public String home() {
-        return "Hello Cloud Lab\n";
-    }
+//    @RequestMapping("/")
+//    public String home() {
+//        return "Hello Cloud Lab\n";
+//    }
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);

@@ -1,6 +1,6 @@
 package hello.controller;
 
-import hello.EventNotFoundException;
+import hello.errors.EventNotFoundException;
 import hello.model.Event;
 import hello.repository.EventsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class EventsController {
     }
     
     @GetMapping("/events/{idEvent}")
-    public Event searchEvent(@PathVariable Long idEvent) {
+    public Event fetchEvent(@PathVariable Long idEvent) {
     	Optional<Event> eventOpt = eventsRepository.findById(idEvent);
     	if(!eventOpt.isPresent()) {
     		throw new EventNotFoundException();

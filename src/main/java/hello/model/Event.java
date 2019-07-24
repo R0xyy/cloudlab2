@@ -1,5 +1,9 @@
 package hello.model;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,20 +21,16 @@ public class Event {
     private Long id;
 	
 	private String name;
-	private String venue;
-	private String time;
-	private Long numOfTickets;
-	private double price;
+	private String venueCode;
+	private LocalDateTime dateTime;
+	
+	@Column(precision=7, scale=2)
+	private BigDecimal price;
 	
     public Event() {}
 
-    public Event(Long id, String name, String venue, String time, Long numOfTickets, double price) {
-        this.id = id;
+    public Event(Long id, String name) {
         this.name = name;
-        this.venue = venue;
-        this.time = time;
-        this.numOfTickets = numOfTickets;
-        this.price = price;
     }
 
     public Long getId() {
@@ -49,35 +49,27 @@ public class Event {
         this.name = name;
     }
 
-	public String getVenue() {
-		return venue;
+	public String getVenueCode() {
+		return venueCode;
 	}
 
-	public void setVenue(String venue) {
-		this.venue = venue;
+	public void setVenue(String venueCode) {
+		this.venueCode = venueCode;
 	}
 
-	public String getTime() {
-		return time;
+	public LocalDateTime getDateTime() {
+		return dateTime;
 	}
 
-	public void setTime(String time) {
-		this.time = time;
+	public void setDate(LocalDateTime dateTime) {
+		this.dateTime = dateTime;
 	}
 
-	public Long getNumOfTickets() {
-		return numOfTickets;
-	}
-
-	public void setNumOfTickets(Long numOfTickets) {
-		this.numOfTickets = numOfTickets;
-	}
-
-	public double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 

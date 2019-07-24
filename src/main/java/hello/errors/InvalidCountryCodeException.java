@@ -1,8 +1,9 @@
-package hello;
+package hello.errors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class EventNotFoundException extends RuntimeException {
+public class InvalidCountryCodeException extends RuntimeException {
+
 }
